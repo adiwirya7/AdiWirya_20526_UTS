@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-icon name="menu" color="#ffffff" (click)="openMenu()"></ion-icon>
+      &nbsp; <ion-title>Admin</ion-title>
+      <ion-icon slot="end" color="#ffffff" [routerLink]="['/admin/new-item']" name="add"></ion-icon>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row size="12">
+      <ion-col size="12" >
+        <ion-item-sliding style="margin-bottom: 10px;" *ngFor="let  item of items" #slidingItems>
+          <!--    edit      -->
+          <ion-item-options side="start">
+            <ion-item-option color="primary" [routerLink]="['/admin/edit-item',item.id]" (click)="edit(item,slidingItems)"><ion-icon slot="icon-only"  name="create"></ion-icon></ion-item-option>
+          </ion-item-options>
+          <!--     delete     -->
+          <ion-item-options side="end">
+            <ion-item-option color="danger"(click)="confirmDelete(item,slidingItems)"><ion-icon slot="icon-only"  name="trash"></ion-icon></ion-item-option>
+          </ion-item-options>
+
+          <ion-item  lines="none">
+            <ion-row>
+              <ion-item class="ion-no-padding">
+                <ion-thumbnail  class="ion-margin">
+                  <img [src]="item.foto">
+                </ion-thumbnail>
+                {{item.nama}}<br>
+                Rp. {{item.harga.toLocaleString('id-ID')}}<br>
+                Stock: {{item.stok.toLocaleString('id-ID')}}
+              </ion-item>
+            </ion-row>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

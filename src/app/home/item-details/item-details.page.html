@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/home"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item lines="none">
+      <ion-img [src]="itemDetails.foto"></ion-img>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+      {{itemDetails.nama}}<br>
+      {{itemDetails.merek}}<br>
+      Rp. {{itemDetails.harga.toLocaleString('id-ID')}}<br>
+      Stock: {{itemDetails.stok.toLocaleString('id-ID')}}<br>
+    </ion-item>
+
+  <ion-item class="ion-margin-vertical" *ngIf="itemDetails.jenis === 'CPU' ">
+    Base Clock : {{itemDetails.deskripsi.baseClock}}<br>
+    Boost Clock : {{itemDetails.deskripsi.boostClock}}<br>
+    Core Count : {{itemDetails.deskripsi.jumlahCore}}<br>
+    Thread Count : {{itemDetails.deskripsi.thread}}
+  </ion-item>
+
+  <ion-item class="ion-margin-vertical" *ngIf="itemDetails.jenis === 'RAM' ">
+    RAM Speed : {{itemDetails.deskripsi.speed}}<br>
+    RAM Size : {{itemDetails.deskripsi.ukuran}}<br>
+    RAM Piece : {{itemDetails.deskripsi.pcs}}
+  </ion-item>
+
+  <ion-item class="ion-margin-vertical" *ngIf="itemDetails.jenis === 'Motherboard' ">
+    Chipset : {{itemDetails.deskripsi.chipset}}<br>
+    For Processor : {{itemDetails.deskripsi.compatible}}
+  </ion-item>
+</ion-list>
+</ion-content>
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<ion-menu side="start" menuId="appMenu" contentId="appContent">
+  <ion-content class="ion-padding-top">
+    <ion-list >
+      <!-- Home    -->
+      <ion-item (click)="closeMenu()" [routerLink]="['/home']" >
+        <ion-icon color="#ffffff" name="home-outline"></ion-icon>
+        &nbsp;Home
+      </ion-item >
+      <!--  Admin   -->
+      <ion-item (click)="closeMenu()" [routerLink]="['/admin']" >
+        <ion-icon color="#ffffff" name="options-outline"></ion-icon>
+        &nbsp;Admin
+      </ion-item>
+      <!-- About App-->
+      <ion-item (click)="closeMenu()" [routerLink]="['/about-app']">
+        <ion-icon color="#ffffff" name="alert-circle-outline"></ion-icon>
+        &nbsp;About App 
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item>
+        <ion-icon color="#ffffff" name="log-out-outline"></ion-icon>
+        &nbsp;Exit         
+      </ion-item>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+
+<ion-app>
+  <ion-router-outlet id="appContent"></ion-router-outlet>
+</ion-app>

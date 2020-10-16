@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-icon name="menu" color="#ffffff" (click)="openMenu()"></ion-icon>
+      &nbsp; <ion-title>Home</ion-title>
+    </ion-item>
+    <ion-item (click)="toggleIcon()" slot="end" >
+      <ion-icon color="#ffffff" [name]="iconStatus ? 'grid-outline' : 'list-outline'"></ion-icon>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row size="12">
+      <ion-col *ngFor="let  item of items" [size]="iconStatus ? '12':'6' " [routerLink]="['/home/item-details',item.id]">
+
+        <!-- Grid -->
+        <ion-item class="ion-no-padding" *ngIf="iconStatus === false">
+          <ion-card class="no-margin">
+            <ion-card-header>
+              <img [src]="item.foto">
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card-title>{{item.nama}}</ion-card-title>
+              <ion-card-subtilte>
+                Rp. {{item.harga.toLocaleString('id-ID')}}<br>
+                Stock: {{item.stok.toLocaleString('id-ID')}}
+              </ion-card-subtilte>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+        <!-- /Grid -->
+
+        <!-- List -->
+        <ion-item  *ngIf="iconStatus === true">
+          <ion-row>
+            <ion-item class="ion-no-padding">
+              <ion-thumbnail  class="ion-margin">
+                <img [src]="item.foto">
+              </ion-thumbnail>
+              {{item.nama}}<br>
+              Rp. {{item.harga.toLocaleString('id-ID')}}<br>
+              Stock: {{item.stok.toLocaleString('id-ID')}}
+            </ion-item>
+          </ion-row>
+        </ion-item>
+        <!-- /List -->
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
